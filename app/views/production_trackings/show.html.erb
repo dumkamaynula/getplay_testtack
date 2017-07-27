@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Game:</strong>
+  <%= @production_tracking.game.name if @production_tracking.game %>
+</p>
+
+<p>
+  <strong>Designer:</strong>
+  <%= @production_tracking.designer.name if @production_tracking.designer %>
+</p>
+
+<p>
+  <strong>Illustrator:</strong>
+  <%= @production_tracking.illustrator.name if @production_tracking.illustrator %>
+</p>
+
+<p>
+  <strong>Writer:</strong>
+  <%= @production_tracking.writer.name if @production_tracking.writer %>
+</p>
+
+<p>
+  <strong>Composer:</strong>
+  <%= @production_tracking.composer.name if @production_tracking.composer %>
+</p>
+
+<p>
+  <strong>Developer:</strong>
+  <%= @production_tracking.developer.name if @production_tracking.developer %>
+</p>
+
+<p>
+  <strong>Live:</strong>
+  <%= @production_tracking.live %>
+</p>
+
+<%= link_to 'Edit', edit_production_tracking_path(@production_tracking) %> |
+<%= link_to 'Back', production_trackings_path %>

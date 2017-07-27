@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'New Production Tracking', new_production_tracking_path, class: "btn btn-info" %>
+<h1>Production Trackings</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Designer</th>
+      <th>Illustrator</th>
+      <th>Writer</th>
+      <th>Composer</th>
+      <th>Developer</th>
+      <th>Live</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @production_trackings.each do |production_tracking| %>
+      <tr>
+        <td><%= production_tracking.game.name if production_tracking.game %></td>
+        <td><%= production_tracking.designer.name if production_tracking.designer %></td>
+        <td><%= production_tracking.illustrator.name if production_tracking.illustrator %></td>
+        <td><%= production_tracking.writer.name if production_tracking.writer %></td>
+        <td><%= production_tracking.composer.name if production_tracking.composer %></td>
+        <td><%= production_tracking.developer.name if production_tracking.developer %></td>
+        <td>
+        <div>
+          <% if production_tracking.live %>
+            yes
+          <% else %>
+            no
+          <% end %>
+        </div>
+        <br>
+        <div>
+          <%= form_for(production_tracking) do |f| %>
+              <td>
+              <%= f.check_box :live  %>
+              </td>
+              <td>
+              <%= f.submit "update status", class: "btn btn-large btn-default" %>
+              </td>
+          <% end %>
+        </div>
+        </td>
+        <td><%= link_to 'Show', production_tracking %></td>
+        <td><%= link_to 'Edit', edit_production_tracking_path(production_tracking) %></td>
+        <td><%= link_to 'Destroy', production_tracking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

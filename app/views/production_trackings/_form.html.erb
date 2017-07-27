@@ -1,0 +1,41 @@
+<%= form_for(production_tracking) do |f| %>
+  <% if production_tracking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(production_tracking.errors.count, "error") %> prohibited this production_tracking from being saved:</h2>
+
+      <ul>
+      <% production_tracking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label :game_id, class: "label label-default" %>
+    <%= f.collection_select(:game_id, @games, :id, :name, {include_blank: "select a game"}, {class: "form-control"} )%>
+
+    <%= f.label :designer_id, class: "label label-default" %>
+    <%= f.collection_select(:designer_id, @designers.order(:name), :id, :name, {include_blank: "select a designer"}, {class: "form-control"}) %>
+
+    <%= f.label :illustrator_id, class: "label label-default" %>
+    <%= f.collection_select(:illustrator_id, @illustrators.order(:name),:id,:name, {include_blank: "select an illustrator"}, {class: "form-control"}) %>
+
+    <%= f.label :writer_id, class: "label label-default" %>
+    <%= f.collection_select(:writer_id, @writers.order(:name),:id,:name, {include_blank: "select a writer"}, {class: "form-control"}) %>
+
+    <%= f.label :composer_id, class: "label label-default" %>
+    <%= f.collection_select(:composer_id, @composers.order(:name),:id,:name, {include_blank: "selects a composer"}, {class: "form-control"}) %>
+
+    <%= f.label :developer_id, class: "label label-default" %>
+    <%= f.collection_select(:developer_id, @developers.order(:name),:id,:name, {include_blank: "select a developer"}, {class: "form-control"}) %>
+
+  <br>
+    <%= f.label :live%>
+    <%= f.check_box :live %>
+  <br>
+  <br>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-default"%>
+  </div>
+<% end %>

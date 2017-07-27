@@ -1,0 +1,41 @@
+<div class="container-fluid">
+
+<table class="table">
+<tr>
+  <td>
+    <%= image_tag @game.photo.url(:medium)%>
+    <br>
+	  <p>  
+	    <%= link_to 'Show', @game %>
+	    <%= link_to 'Edit', edit_game_path(@game) %>
+	    <%= link_to 'Destroy', @game, method: :delete, data: { confirm: 'Are you sure?' } %>
+	  </p>
+  </td>
+    
+  <td><h4>
+  	title: <%= @game.name %> || 
+    package: <%= @game.package_name %> || 
+    store: <%= @game.store %></h4>
+  <p>
+  <%if @game.production_tracking %>
+    designer: <%= @game.production_tracking.designer.name if @game.production_tracking.designer.present? %>
+    <br>
+    illustrator: <%= @game.production_tracking.illustrator.name if @game.production_tracking.illustrator.present? %>
+    <br>
+    writer: <%= @game.production_tracking.writer.name if @game.production_tracking.writer.present? %>
+    <br>
+    composer: <%= @game.production_tracking.composer.name if @game.production_tracking.composer.present? %>
+    <br>
+    developer: <%= @game.production_tracking.developer.name if @game.production_tracking.developer.present? %>  
+  <% end %>
+  	<br> 
+  	<% if @game.production_tracking.present? %>
+  		status:<%= @game.production_tracking.live %>
+  	<% else %>
+  		not tracked
+  	<% end %>
+  </p>
+  </td>
+</tr>    
+</table>
+</div>

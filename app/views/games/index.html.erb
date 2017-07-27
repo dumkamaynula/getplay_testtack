@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Games || <%= link_to 'New Game', new_game_path, class: "btn btn-info" %></h1>
+<div class="container-fluid">
+<table class="table table-hover">
+  <% @games.each do |game| %>
+    <div class="row-fluid-offset-0">
+      <tr>
+      <td>
+        <%= image_tag game.photo.url(:medium)%>
+      </td>
+      <td>  
+        title: <%= game.name %>
+        <br>
+        package: <%= game.package_name %>
+        <br>
+        store: <%= game.store %>
+      </td>
+      <td>
+        <%if game.production_tracking %>
+          designer: <%= game.production_tracking.designer.name if game.production_tracking.designer.present?%>
+          <br>
+          illustrator: <%= game.production_tracking.illustrator.name if game.production_tracking.illustrator.present?%>
+          <br>
+          writer: <%= game.production_tracking.writer.name if game.production_tracking.writer.present?%>
+          <br>
+          composer: <%= game.production_tracking.composer.name if game.production_tracking.composer.present?%>
+          <br>
+          developer: <%= game.production_tracking.developer.name if game.production_tracking.developer.present?%>  
+          <br>
+          <% if game.production_tracking.live %> 
+            live: yes
+          <% else %>
+            live: no
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% if game.production_tracking%>
+          <%= render 'production_tracking_form', object: [game.production_tracking] %>
+        <% else %>
+          <%= render 'production_tracking_form', object: [game.build_production_tracking] %>
+        <% end %>
+      </td>
+          <td>
+          <div>
+            <%= link_to 'Show', game, class: "btn btn-default" %>
+          </div>
+            <br>
+          <div>
+            <%= link_to 'Edit', edit_game_path(game), class: "btn btn-default" %>
+          </div>  
+            <br>
+          <div>
+            <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+          </div>
+          </td>
+          </tr>
+        </div>
+      <% end %>
+</table>
+</div>
+<br>
+
+

@@ -1,0 +1,23 @@
+<%= form_for(object) do |f| %>
+<%= f.label :designer_id, class: "label label-default" %>
+<%= f.collection_select(:designer_id, @designers.order(:name), :id, :name, {include_blank: "select a designer"}, {class: "form-control"}) %>
+
+<%= f.label :illustrator_id, class: "label label-default" %>
+<%= f.collection_select(:illustrator_id, @illustrators.order(:name),:id,:name, {include_blank: "select an illustrator"}, {class: "form-control"}) %>
+
+<%= f.label :writer_id, class: "label label-default" %>
+<%= f.collection_select(:writer_id, @writers.order(:name),:id,:name, {include_blank: "select a writer"}, {class: "form-control"}) %>
+
+<%= f.label :composer_id, class: "label label-default" %>
+<%= f.collection_select(:composer_id, @composers.order(:name),:id,:name, {include_blank: "selects a composer"}, {class: "form-control"}) %>
+
+<%= f.label :developer_id, class: "label label-default" %>
+<%= f.collection_select(:developer_id, @developers.order(:name),:id,:name, {include_blank: "select a developer"}, {class: "form-control"}) %>
+
+<%= f.label :live%>
+<%= f.check_box :live %>
+<br>
+  <div class="actions">
+    <%= f.submit class: "btn btn-default"%>
+  </div>
+<% end %>
